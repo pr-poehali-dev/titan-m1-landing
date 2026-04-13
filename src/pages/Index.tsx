@@ -122,12 +122,20 @@ function Reveal({
   );
 }
 
+const SEND_URL = "https://functions.poehali.dev/532ced8c-50c8-4078-9e04-5b3be46d3afb";
+
 export default function Index() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroFade, setHeroFade] = useState(true);
+
+  // Form state
+  const [formName, setFormName] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formComment, setFormComment] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
 
   // Auto-advance hero slider
   useEffect(() => {
@@ -162,6 +170,38 @@ export default function Index() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formName.trim() || !formPhone.trim()) return;
+    setFormStatus("sending");
+    try {
+      const optionLabels = selectedOptions.map(
+        (id) => OPTIONS.find((o) => o.id === id)?.label ?? id
+      );
+      const res = await fetch(SEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formName,
+          phone: formPhone,
+          comment: formComment,
+          options: optionLabels,
+          total_price: totalPrice,
+        }),
+      });
+      if (res.ok) {
+        setFormStatus("ok");
+        setFormName("");
+        setFormPhone("");
+        setFormComment("");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   const navItems = [
@@ -556,22 +596,33 @@ export default function Index() {
           <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {/* Form */}
             <Reveal>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                {[
-                  { label: "Ваше имя",  type: "text", placeholder: "Александр" },
-                  { label: "Телефон",   type: "tel",  placeholder: "+7 (___) ___-__-__" },
-                ].map((f) => (
-                  <div key={f.label}>
-                    <label className="block text-[10px] font-oswald tracking-[0.2em] text-white/35 uppercase mb-2">
-                      {f.label}
-                    </label>
-                    <input
-                      type={f.type}
-                      placeholder={f.placeholder}
-                      className="w-full bg-titan-card border border-titan-border text-white/80 px-4 py-3.5 text-sm font-ibm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-white/18"
-                    />
-                  </div>
-                ))}
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div>
+                  <label className="block text-[10px] font-oswald tracking-[0.2em] text-white/35 uppercase mb-2">
+                    Ваше имя
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Александр"
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                    required
+                    className="w-full bg-titan-card border border-titan-border text-white/80 px-4 py-3.5 text-sm font-ibm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-white/18"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-oswald tracking-[0.2em] text-white/35 uppercase mb-2">
+                    Телефон
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+7 (___) ___-__-__"
+                    value={formPhone}
+                    onChange={(e) => setFormPhone(e.target.value)}
+                    required
+                    className="w-full bg-titan-card border border-titan-border text-white/80 px-4 py-3.5 text-sm font-ibm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-white/18"
+                  />
+                </div>
                 <div>
                   <label className="block text-[10px] font-oswald tracking-[0.2em] text-white/35 uppercase mb-2">
                     Пожелания по комплектации
@@ -579,11 +630,29 @@ export default function Index() {
                   <textarea
                     rows={4}
                     placeholder="Опишите ваши пожелания..."
+                    value={formComment}
+                    onChange={(e) => setFormComment(e.target.value)}
                     className="w-full bg-titan-card border border-titan-border text-white/80 px-4 py-3.5 text-sm font-ibm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-white/18 resize-none"
                   />
                 </div>
-                <button type="submit" className="btn-gold w-full py-4 text-sm mt-2">
-                  <span>Отправить заявку</span>
+
+                {formStatus === "ok" && (
+                  <div className="bg-emerald-900/30 border border-emerald-700/40 px-4 py-3 text-sm text-emerald-400 font-ibm">
+                    Заявка отправлена! Мы свяжемся с вами в течение часа.
+                  </div>
+                )}
+                {formStatus === "error" && (
+                  <div className="bg-red-900/30 border border-red-700/40 px-4 py-3 text-sm text-red-400 font-ibm">
+                    Ошибка отправки. Позвоните нам: +7 (995) 258-80-80
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={formStatus === "sending"}
+                  className="btn-gold w-full py-4 text-sm mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  <span>{formStatus === "sending" ? "Отправляем..." : "Отправить заявку"}</span>
                 </button>
               </form>
             </Reveal>
