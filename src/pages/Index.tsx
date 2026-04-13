@@ -37,18 +37,20 @@ const ADVANTAGES = [
   { icon: "Zap", title: "Всё включено", desc: "Лебёдка 3,5 т., фаркоп и оптика в базе" },
 ];
 
-const BASE_PRICE = 1_350_000;
+const BASE_PRICE = 590_000;
 
 const OPTIONS = [
-  { id: "doors",       label: "Двери со стеклом",                    price: 28_000 },
-  { id: "windshield",  label: "Лобовое стекло + дворник + омыватель", price: 18_000 },
-  { id: "heater",      label: "Отопитель (печка)",                    price: 12_000 },
-  { id: "diff_mech",   label: "Самоблокирующийся дифференциал",       price: 24_000 },
-  { id: "diff_elec",   label: "Электроблокировка редукторов",         price: 44_000 },
-  { id: "tent",        label: "Влагозащитный тент для хранения",      price: 14_000 },
-  { id: "coilovers",   label: "Койловеры (4 шт., регулируемые)",      price: 96_000 },
-  { id: "eps",         label: "Электроусилитель руля",                price: 32_000 },
-  { id: "damper",      label: "Демпфер рулевой рейки",                price: 11_000 },
+  { id: "4seat",       label: "Четырёхместный кузов",                           price: 134_000 },
+  { id: "doors",       label: "Установка дверей со стеклом",                    price: 28_000  },
+  { id: "windshield",  label: "Лобовое съёмное стекло + дворник + омыватель",   price: 21_000  },
+  { id: "heater",      label: "Установка отопителя (печки)",                    price: 12_000  },
+  { id: "diff_mech",   label: "Самоблокирующийся дифференциал",                 price: 24_000  },
+  { id: "diff_elec",   label: "Электроблокировка редукторов",                   price: 52_000  },
+  { id: "tent",        label: "Влагозащитный тент для хранения техники",        price: 16_000  },
+  { id: "coilovers",   label: "Койловеры — регулируемые амортизаторы (4 шт.)",  price: 138_000 },
+  { id: "eps",         label: "Электроусилитель руля",                          price: 42_000  },
+  { id: "damper",      label: "Демпфер рулевой рейки",                          price: 18_000  },
+  { id: "music",       label: "Музыка с сабвуфером",                            price: 42_000  },
 ];
 
 const EQUIPMENT = [
@@ -591,7 +593,7 @@ export default function Index() {
               <div className="space-y-7">
                 <div className="space-y-4">
                   {[
-                    { icon: "Phone",   label: "Телефон",        value: "+7 (XXX) XXX-XX-XX" },
+                    { icon: "Phone",   label: "Телефон",        value: "+7 (995) 258-80-80" },
                     { icon: "MapPin",  label: "Город",           value: "Краснодар" },
                     { icon: "Clock",   label: "Режим работы",    value: "Пн–Сб, 9:00–19:00" },
                   ].map((c) => (
@@ -610,17 +612,26 @@ export default function Index() {
                 <div className="section-divider" />
 
                 <div>
-                  <div className="text-[10px] font-oswald tracking-[0.25em] text-gold/60 uppercase mb-3">Мессенджеры</div>
-                  <div className="flex gap-3">
-                    {[
-                      { icon: "MessageCircle", label: "WhatsApp" },
-                      { icon: "Send",          label: "Telegram"  },
-                    ].map((s) => (
-                      <button key={s.label} className="btn-outline-gold flex items-center gap-2 px-5 py-2.5 text-xs">
-                        <Icon name={s.icon} size={14} />
-                        {s.label}
-                      </button>
-                    ))}
+                  <div className="text-[10px] font-oswald tracking-[0.25em] text-gold/60 uppercase mb-3">Связь</div>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="https://wa.me/79952588080"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-outline-gold flex items-center gap-2 px-5 py-2.5 text-xs"
+                    >
+                      <Icon name="MessageCircle" size={14} />
+                      МАКС
+                    </a>
+                    <a
+                      href="https://vk.com/s_techno_krd"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-outline-gold flex items-center gap-2 px-5 py-2.5 text-xs"
+                    >
+                      <Icon name="Users" size={14} />
+                      ВКонтакте
+                    </a>
                   </div>
                 </div>
 
@@ -647,7 +658,7 @@ export default function Index() {
             <span className="font-oswald text-lg font-bold tracking-[0.2em] text-white">ТИТАН</span>
             <span className="font-oswald text-lg font-light tracking-[0.2em] text-gold">М1</span>
           </div>
-          <p className="text-xs text-white/18 font-ibm">© 2024 Багги-вездеход ТИТАН М1 · Краснодар</p>
+          <p className="text-xs text-white/18 font-ibm">© 2025–2026 Багги-вездеход ТИТАН М1 · Краснодар</p>
           <div className="flex gap-6">
             {navItems.slice(0, 3).map((n) => (
               <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link text-xs">
