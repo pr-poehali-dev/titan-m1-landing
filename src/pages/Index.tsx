@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMAGE =
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/files/b216efb4-798a-4474-922b-90915eff6ba1.jpg";
+const IMAGES = [
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/070e1ba5-d895-4dce-936f-c53ac036e020.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/dacd4e03-6891-4256-86c2-4191f2a53c54.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/0808a7ec-d57c-479e-b303-b48a54f381a4.jpg",
+];
 
 const SPECS = [
   { label: "Двигатель", value: "НИВА 2121, 1.7 л, 79 л.с." },
@@ -121,6 +124,25 @@ export default function Index() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [heroSlide, setHeroSlide] = useState(0);
+  const [heroFade, setHeroFade] = useState(true);
+
+  // Auto-advance hero slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroFade(false);
+      setTimeout(() => {
+        setHeroSlide((p) => (p + 1) % IMAGES.length);
+        setHeroFade(true);
+      }, 400);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goSlide = (i: number) => {
+    setHeroFade(false);
+    setTimeout(() => { setHeroSlide(i); setHeroFade(true); }, 300);
+  };
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -202,10 +224,15 @@ export default function Index() {
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-        {/* BG image */}
+        {/* BG slider */}
         <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="ТИТАН М1" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-titan-black via-titan-black/75 to-titan-black/10" />
+          <img
+            src={IMAGES[heroSlide]}
+            alt="ТИТАН М1"
+            className="w-full h-full object-cover object-center"
+            style={{ opacity: heroFade ? 1 : 0, transition: "opacity 0.4s ease" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-titan-black via-titan-black/80 to-titan-black/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-titan-black via-transparent to-titan-black/40" />
         </div>
 
@@ -265,6 +292,21 @@ export default function Index() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Slider dots */}
+        <div className="absolute bottom-20 right-8 md:right-12 flex flex-col gap-2 z-20">
+          {IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goSlide(i)}
+              className="w-1.5 rounded-full transition-all duration-300"
+              style={{
+                height: heroSlide === i ? "28px" : "8px",
+                background: heroSlide === i ? "#C9A84C" : "rgba(201,168,76,0.3)",
+              }}
+            />
+          ))}
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
@@ -462,19 +504,30 @@ export default function Index() {
           </Reveal>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {/* Main large */}
+            {/* Main large — front view */}
             <Reveal className="col-span-2 row-span-2">
-              <div className="gallery-item w-full h-full min-h-[320px] rounded-none overflow-hidden">
-                <img src={HERO_IMAGE} alt="ТИТАН М1 — главное фото" className="w-full h-full object-cover" />
+              <div className="gallery-item w-full h-full min-h-[320px] overflow-hidden cursor-pointer">
+                <img src={IMAGES[0]} alt="ТИТАН М1 — вид спереди" className="w-full h-full object-cover" />
               </div>
             </Reveal>
-            {[1, 2, 3].map((n) => (
-              <Reveal key={n} delay={n * 80}>
-                <div className="gallery-item aspect-square overflow-hidden">
-                  <img src={HERO_IMAGE} alt={`ТИТАН М1 — фото ${n + 1}`} className="w-full h-full object-cover" />
-                </div>
-              </Reveal>
-            ))}
+            {/* Small — back view */}
+            <Reveal delay={80}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[1]} alt="ТИТАН М1 — вид сзади" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            {/* Small — side view */}
+            <Reveal delay={160}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[2]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            {/* Wide bottom banner */}
+            <Reveal delay={240} className="col-span-2">
+              <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
+                <img src={IMAGES[1]} alt="ТИТАН М1 — кузов" className="w-full h-full object-cover object-bottom" />
+              </div>
+            </Reveal>
           </div>
 
           <Reveal>
