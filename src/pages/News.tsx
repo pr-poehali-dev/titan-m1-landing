@@ -1,6 +1,35 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const NEWS = [
+  {
+    id: 1,
+    date: "Июль 2026",
+    title: "Список изменений июль 2026",
+    items: [
+      "Колея уменьшается на 10 см. со 185 см. до 175 см. Использование нижних рычагов длинных с Нивы без переделок, на сайлентблоках с креплениями каждой стороны.",
+      "Переработка верхнего рычага с пластиной под шаровую 10 мм. + добавление резьбы и контргаек для регулировки развала.",
+      "Съёмные сиденья и отсек для доступа и разбора КПП и раздатки с салона (ранее не съёмное и разбор только с извлечением ДВС).",
+      "Увеличенное подкапотное пространство +5 см в длину и ширину.",
+      "Передние амортизаторы 2109 с чашами и пружиной под 2121 (толстая крепкая пружина) — ранее 2111 (перед/зад).",
+      "Топливный бак с Газели 60 литров. Идеален в задней части (уже установлен).",
+      "Чехлы/накидки на сиденья.",
+      "Увеличение туннеля в салоне и установка пластикового декоративного корпуса от Нивы с подстаканниками и прикуривателем.",
+      "Приборная панель на основе бортового компьютера с подключением к OBD2, полное удаление ключей и замка зажигания.",
+      "Усиленный рулевой узел, встроенный в корпус (уже реализовано).",
+      "Капот на газлифте (уже реализовано).",
+      "Добавление пластиковой защиты двигателя по бокам и в задней части (пластик 3 мм.).",
+      "Полноценный металлический корпус для бачков охлаждающей жидкости.",
+      "Полная защита тормозных трубок и шлангов внутри жёстких шлангов большего диаметра.",
+      "Увеличение кабины на 10 см. в ширину для установки туннеля и более удобной эксплуатации.",
+      "Внедрение подножек с рифлёным металлом.",
+      "Установка поручней для удобной посадки водителя и пассажира.",
+      "Переработка педального узла и тормозной системы.",
+      "Полная защита проводки и блоков, увеличенная масса кузова.",
+    ],
+  },
+];
+
 export default function News() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,30 +61,28 @@ export default function News() {
       </nav>
 
       <div className="pt-40 pb-24 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <span className="font-oswald text-[11px] tracking-[0.35em] text-gold uppercase">Последние события</span>
-          <h1 className="font-cormorant text-5xl md:text-7xl font-bold text-white mt-3 mb-6">Новости</h1>
-          <p className="font-ibm text-base text-white/40 max-w-xl leading-relaxed">
-            Раздел находится в разработке. Здесь будут публиковаться новости и обновления о ТИТАН М1.
-          </p>
+          <h1 className="font-cormorant text-5xl md:text-7xl font-bold text-white mt-3 mb-16">Новости</h1>
 
-          <div className="mt-20 card-premium p-12 flex flex-col items-center justify-center text-center max-w-lg">
-            <div className="w-16 h-16 bg-gold/10 border border-gold/20 flex items-center justify-center mb-6">
-              <Icon name="Newspaper" size={28} className="text-gold" />
-            </div>
-            <h2 className="font-cormorant text-3xl font-bold text-white mb-3">Скоро</h2>
-            <p className="font-ibm text-sm text-white/35 leading-relaxed">
-              Контент этой страницы готовится. Следите за обновлениями в группе ВКонтакте.
-            </p>
-            <div className="flex gap-3 mt-8">
-              <a href="https://vk.com/s_techno_krd" target="_blank" rel="noopener noreferrer" className="btn-outline-gold flex items-center gap-2 px-6 py-3 text-sm">
-                <Icon name="Users" size={14} />
-                Группа ВК
-              </a>
-              <a href="/" className="btn-gold px-6 py-3 text-sm inline-block">
-                <span>На главную</span>
-              </a>
-            </div>
+          <div className="space-y-10">
+            {NEWS.map((post) => (
+              <article key={post.id} className="card-premium p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-gold" />
+                  <span className="font-oswald text-[11px] tracking-[0.3em] text-gold/70 uppercase">{post.date}</span>
+                </div>
+                <h2 className="font-cormorant text-3xl md:text-4xl font-bold text-white mb-8">{post.title}</h2>
+                <ol className="space-y-4">
+                  {post.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <span className="font-oswald text-sm font-semibold text-gold/60 shrink-0 w-6 text-right mt-0.5">{i + 1}.</span>
+                      <span className="font-ibm text-sm text-white/65 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </article>
+            ))}
           </div>
         </div>
       </div>
