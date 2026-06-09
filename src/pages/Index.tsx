@@ -771,6 +771,103 @@ export default function Index() {
         </div>
       </section>
 
+      <div className="section-divider" />
+
+      {/* ── DOCS ─────────────────────────────────────────────── */}
+      <section id="docs" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <span className="font-oswald text-[11px] tracking-[0.35em] text-gold uppercase">Юридическая сторона</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-white mt-3 mb-4">
+              Оформление документов<br />на спортинвентарь
+            </h2>
+            <p className="font-ibm text-sm text-white/40 mb-16 max-w-2xl">
+              Свидетельство на спортинвентарь — это неофициальный, но юридически значимый документ,
+              подтверждающий ваше право собственности на технику, которая не подлежит государственной
+              регистрации (питбайки, кроссовые мотоциклы, багги и т. д.).
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Reveal>
+              <div className="card-premium p-6 h-full">
+                <div className="font-oswald text-[10px] tracking-[0.25em] text-gold/60 uppercase mb-4">В документе указывается</div>
+                <ul className="space-y-3">
+                  {[
+                    "Данные владельца",
+                    "Подробное описание техники (модель, VIN/номер рамы)",
+                    "Основание приобретения (договор купли-продажи, чек)",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Icon name="Check" size={13} className="text-gold mt-0.5 shrink-0" />
+                      <span className="font-ibm text-sm text-white/60 leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={100}>
+              <div className="card-premium p-6 h-full border-gold/20">
+                <div className="font-oswald text-[10px] tracking-[0.25em] text-gold/60 uppercase mb-4">Что дают эти документы</div>
+                <ul className="space-y-4">
+                  {[
+                    { title: "Спокойствие при перевозке", desc: "Покажите свидетельство, если инспектор ГИБДД запросит документы на груз в прицепе. Доказывает, что техника не украдена." },
+                    { title: "Доверие при продаже", desc: "Паспорт и СТС повышают привлекательность техники, делая сделку солиднее, чем с рукописным ДКП." },
+                    { title: "Подтверждение владения", desc: "Официальный документ от юридического лица, а не просто рукописная бумага." },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-gold/15 border border-gold/30 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon name="Check" size={11} className="text-gold" />
+                      </div>
+                      <div>
+                        <div className="font-oswald text-sm font-semibold text-gold-light mb-0.5">{item.title}</div>
+                        <div className="font-ibm text-xs text-white/40 leading-relaxed">{item.desc}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <div className="card-premium p-6 h-full opacity-80">
+                <div className="font-oswald text-[10px] tracking-[0.25em] text-white/30 uppercase mb-4">Что не дают эти документы</div>
+                <ul className="space-y-4">
+                  {[
+                    { title: "Право ездить по дорогам", desc: "Запрещено ПДД для техники без регистрации." },
+                    { title: "Постановку на учёт", desc: "Нельзя зарегистрировать в ГИБДД или Гостехнадзоре." },
+                    { title: "Допуск к соревнованиям", desc: "Требуется паспорт от РАФ или ФМСР." },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon name="X" size={11} className="text-white/30" />
+                      </div>
+                      <div>
+                        <div className="font-oswald text-sm font-semibold text-white/50 mb-0.5">{item.title}</div>
+                        <div className="font-ibm text-xs text-white/25 leading-relaxed">{item.desc}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <div className="card-premium p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <div className="font-oswald text-base font-semibold text-gold-light mb-1">Оформить документы на спортинвентарь</div>
+                <div className="font-ibm text-sm text-white/40">Тех.паспорт, СТС, ДКП — стоимость 15 000 ₽</div>
+              </div>
+              <button onClick={() => scrollTo("contacts")} className="btn-gold px-8 py-3 text-sm shrink-0">
+                <span>Заказать оформление</span>
+              </button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── FOOTER ───────────────────────────────────────────── */}
       <footer className="border-t border-titan-border py-8 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
