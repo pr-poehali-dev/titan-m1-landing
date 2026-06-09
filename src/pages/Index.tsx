@@ -232,11 +232,11 @@ export default function Index() {
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
     { label: "Новости",        id: "news",    href: "/news" },
-    { label: "Оформление спортинвентаря", id: "docs" },
     { label: "Группа ВК",      id: "vk",      href: "https://vk.com/s_techno_krd" },
   ];
 
   const moreItems = [
+    { label: "Оформление спортинвентаря", id: "docs" },
     { label: "Чертежи",       href: "/blueprints" },
     { label: "КИТ-комплекты", href: "/kit" },
   ];
@@ -287,16 +287,26 @@ export default function Index() {
                 <Icon name={moreOpen ? "ChevronUp" : "ChevronDown"} size={13} />
               </button>
               {moreOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-titan-dark border border-titan-border min-w-[160px] py-1 z-50">
-                  {moreItems.map((m) => (
-                    <a
-                      key={m.href}
-                      href={m.href}
-                      className="block px-4 py-2.5 font-ibm text-sm text-white/60 hover:text-gold hover:bg-white/5 transition-colors"
-                    >
-                      {m.label}
-                    </a>
-                  ))}
+                <div className="absolute top-full right-0 mt-2 bg-titan-dark border border-titan-border min-w-[200px] py-1 z-50">
+                  {moreItems.map((m) =>
+                    m.id ? (
+                      <button
+                        key={m.id}
+                        onClick={() => { scrollTo(m.id!); setMoreOpen(false); }}
+                        className="block w-full text-left px-4 py-2.5 font-ibm text-sm text-white/60 hover:text-gold hover:bg-white/5 transition-colors"
+                      >
+                        {m.label}
+                      </button>
+                    ) : (
+                      <a
+                        key={m.href}
+                        href={m.href}
+                        className="block px-4 py-2.5 font-ibm text-sm text-white/60 hover:text-gold hover:bg-white/5 transition-colors"
+                      >
+                        {m.label}
+                      </a>
+                    )
+                  )}
                 </div>
               )}
             </div>
@@ -333,11 +343,17 @@ export default function Index() {
                 </button>
               )
             )}
-            {moreItems.map((m) => (
-              <a key={m.href} href={m.href} className="nav-link text-left">
-                {m.label}
-              </a>
-            ))}
+            {moreItems.map((m) =>
+              m.id ? (
+                <button key={m.id} onClick={() => { scrollTo(m.id!); setMenuOpen(false); }} className="nav-link text-left">
+                  {m.label}
+                </button>
+              ) : (
+                <a key={m.href} href={m.href} className="nav-link text-left">
+                  {m.label}
+                </a>
+              )
+            )}
             <button onClick={() => scrollTo("contacts")} className="btn-gold px-6 py-3 text-xs mt-1">
               <span>Оставить заявку</span>
             </button>
