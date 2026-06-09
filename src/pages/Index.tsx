@@ -222,6 +222,7 @@ export default function Index() {
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
     { label: "Контакты",       id: "contacts" },
+    { label: "Группа ВК",      id: "vk", href: "https://vk.com/s_techno_krd" },
   ];
 
   return (
@@ -242,18 +243,24 @@ export default function Index() {
           </button>
 
           <div className="hidden md:flex items-center gap-7">
-            {navItems.map((n) => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link">
-                {n.label}
-              </button>
-            ))}
+            {navItems.map((n) =>
+              n.href ? (
+                <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link">
+                  {n.label}
+                </a>
+              ) : (
+                <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link">
+                  {n.label}
+                </button>
+              )
+            )}
           </div>
 
           <button
             onClick={() => scrollTo("contacts")}
             className="hidden md:block btn-gold px-6 py-2.5 text-xs rounded-none"
           >
-            <span>Получить КП</span>
+            <span>Оставить заявку</span>
           </button>
 
           <button className="md:hidden text-white/70 hover:text-white" onClick={() => setMenuOpen(!menuOpen)}>
@@ -263,13 +270,19 @@ export default function Index() {
 
         {menuOpen && (
           <div className="md:hidden bg-titan-dark/98 border-t border-titan-border px-6 py-5 flex flex-col gap-5">
-            {navItems.map((n) => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link text-left">
-                {n.label}
-              </button>
-            ))}
+            {navItems.map((n) =>
+              n.href ? (
+                <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link text-left">
+                  {n.label}
+                </a>
+              ) : (
+                <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link text-left">
+                  {n.label}
+                </button>
+              )
+            )}
             <button onClick={() => scrollTo("contacts")} className="btn-gold px-6 py-3 text-xs mt-1">
-              <span>Получить коммерческое предложение</span>
+              <span>Оставить заявку</span>
             </button>
           </div>
         )}
@@ -618,7 +631,7 @@ export default function Index() {
             <span className="font-oswald text-[11px] tracking-[0.35em] text-gold uppercase">Краснодар</span>
             <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-white mt-3">Связаться с нами</h2>
             <p className="font-ibm text-sm text-white/40 mt-3 max-w-sm mx-auto">
-              Отвечаем в течение часа, консультируем и согласуем комплектацию
+              Отвечаем в течение часа, консультируем и согласовываем комплектацию
             </p>
           </Reveal>
 
@@ -693,7 +706,7 @@ export default function Index() {
                   {[
                     { icon: "Phone",   label: "Телефон",        value: "+7 (995) 258-80-80" },
                     { icon: "MapPin",  label: "Город",           value: "Краснодар" },
-                    { icon: "Clock",   label: "Режим работы",    value: "Пн–Сб, 9:00–19:00" },
+                    { icon: "Clock",   label: "Режим работы",    value: "Пн–Сб, 9:00–18:00" },
                   ].map((c) => (
                     <div key={c.label} className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-gold/10 border border-gold/15 flex items-center justify-center shrink-0">
@@ -712,15 +725,6 @@ export default function Index() {
                 <div>
                   <div className="text-[10px] font-oswald tracking-[0.25em] text-gold/60 uppercase mb-3">Связь</div>
                   <div className="flex flex-wrap gap-3">
-                    <a
-                      href="https://wa.me/79952588080"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-outline-gold flex items-center gap-2 px-5 py-2.5 text-xs"
-                    >
-                      <Icon name="MessageCircle" size={14} />
-                      МАКС
-                    </a>
                     <a
                       href="https://vk.com/s_techno_krd"
                       target="_blank"
