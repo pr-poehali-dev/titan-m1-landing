@@ -230,7 +230,7 @@ export default function Index() {
     { label: "Комплектация",   id: "equipment" },
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
-    { label: "Контакты",       id: "contacts" },
+    { label: "Оформление спортинвентаря", id: "docs" },
     { label: "Группа ВК",      id: "vk", href: "https://vk.com/s_techno_krd" },
   ];
 
