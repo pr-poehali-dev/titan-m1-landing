@@ -147,6 +147,7 @@ const SEND_URL = "https://functions.poehali.dev/532ced8c-50c8-4078-9e04-5b3be46d
 export default function Index() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroFade, setHeroFade] = useState(true);
@@ -226,14 +227,18 @@ export default function Index() {
 
   const navItems = [
     { label: "Характеристики", id: "specs" },
+    { label: "Преимущества",   id: "advantages" },
     { label: "Комплектация",   id: "equipment" },
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
     { label: "Новости",        id: "news",    href: "/news" },
     { label: "Оформление спортинвентаря", id: "docs" },
-    { label: "Чертежи",        id: "blueprints", href: "/blueprints" },
-    { label: "КИТ-комплекты",  id: "kit",     href: "/kit" },
     { label: "Группа ВК",      id: "vk",      href: "https://vk.com/s_techno_krd" },
+  ];
+
+  const moreItems = [
+    { label: "Чертежи",       href: "/blueprints" },
+    { label: "КИТ-комплекты", href: "/kit" },
   ];
 
   return (
@@ -271,6 +276,30 @@ export default function Index() {
                 </button>
               )
             )}
+            {/* Подменю "Ещё..." */}
+            <div className="relative">
+              <button
+                className="nav-link flex items-center gap-1"
+                onClick={() => setMoreOpen((p) => !p)}
+                onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
+              >
+                Ещё…
+                <Icon name={moreOpen ? "ChevronUp" : "ChevronDown"} size={13} />
+              </button>
+              {moreOpen && (
+                <div className="absolute top-full right-0 mt-2 bg-titan-dark border border-titan-border min-w-[160px] py-1 z-50">
+                  {moreItems.map((m) => (
+                    <a
+                      key={m.href}
+                      href={m.href}
+                      className="block px-4 py-2.5 font-ibm text-sm text-white/60 hover:text-gold hover:bg-white/5 transition-colors"
+                    >
+                      {m.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           <button
@@ -304,6 +333,11 @@ export default function Index() {
                 </button>
               )
             )}
+            {moreItems.map((m) => (
+              <a key={m.href} href={m.href} className="nav-link text-left">
+                {m.label}
+              </a>
+            ))}
             <button onClick={() => scrollTo("contacts")} className="btn-gold px-6 py-3 text-xs mt-1">
               <span>Оставить заявку</span>
             </button>
