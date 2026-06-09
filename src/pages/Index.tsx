@@ -8,14 +8,11 @@ const HERO_IMAGES = [
 ];
 
 const IMAGES = [
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/146d119a-2425-42e9-8750-3947ed40fb44.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/f66d5e20-5222-4526-8ce1-c32db214135d.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/9473d8da-03a4-4f9a-8dbf-49d21c95a831.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/070e1ba5-d895-4dce-936f-c53ac036e020.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/dacd4e03-6891-4256-86c2-4191f2a53c54.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/0808a7ec-d57c-479e-b303-b48a54f381a4.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/ec481230-05a7-4f08-8007-29623fdbdc3d.jpg",
-  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/025ff5e3-7c10-4ee5-93fb-f784cf9d40ba.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/6dac9425-aaf7-45f0-ad91-b6ac70b2122e.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/a89e451b-faf4-4434-a9e0-45c4f6525c4f.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/392bc7b6-86e7-488a-a152-0b0bb176b304.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/89517788-db02-4264-b531-9c6c5b207b37.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/ccdd04b4-441b-4fe9-bfe7-e7e8deaedf31.jpg",
 ];
 
 const SPECS = [
@@ -585,38 +582,22 @@ export default function Index() {
             </Reveal>
             <Reveal delay={80}>
               <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[1]} alt="ТИТАН М1 — вид сзади" className="w-full h-full object-cover" />
+                <img src={IMAGES[1]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
               </div>
             </Reveal>
             <Reveal delay={160}>
               <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[2]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+                <img src={IMAGES[2]} alt="ТИТАН М1 — вид сзади" className="w-full h-full object-cover" />
               </div>
             </Reveal>
             <Reveal delay={240} className="col-span-2">
               <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
-                <img src={IMAGES[3]} alt="ТИТАН М1 — кузов" className="w-full h-full object-cover object-bottom" />
+                <img src={IMAGES[3]} alt="ТИТАН М1 — спереди" className="w-full h-full object-cover object-center" />
               </div>
             </Reveal>
-            {/* Second row of photos */}
-            <Reveal delay={320}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[4]} alt="ТИТАН М1 — детали" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={400}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[5]} alt="ТИТАН М1 — интерьер" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={480}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[6]} alt="ТИТАН М1 — в лесу" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={560}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[7]} alt="ТИТАН М1 — 4-местный" className="w-full h-full object-cover" />
+            <Reveal delay={320} className="col-span-2">
+              <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
+                <img src={IMAGES[4]} alt="ТИТАН М1 — упрощённый дизайн" className="w-full h-full object-cover object-center" />
               </div>
             </Reveal>
           </div>
