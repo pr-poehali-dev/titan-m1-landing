@@ -226,12 +226,14 @@ export default function Index() {
 
   const navItems = [
     { label: "Характеристики", id: "specs" },
-    { label: "Преимущества",   id: "advantages" },
     { label: "Комплектация",   id: "equipment" },
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
+    { label: "Новости",        id: "news",    href: "/news" },
     { label: "Оформление спортинвентаря", id: "docs" },
-    { label: "Группа ВК",      id: "vk", href: "https://vk.com/s_techno_krd" },
+    { label: "Чертежи",        id: "blueprints", href: "/blueprints" },
+    { label: "КИТ-комплекты",  id: "kit",     href: "/kit" },
+    { label: "Группа ВК",      id: "vk",      href: "https://vk.com/s_techno_krd" },
   ];
 
   return (
@@ -254,9 +256,15 @@ export default function Index() {
           <div className="hidden md:flex items-center gap-7">
             {navItems.map((n) =>
               n.href ? (
-                <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link">
-                  {n.label}
-                </a>
+                n.href.startsWith("http") ? (
+                  <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link">
+                    {n.label}
+                  </a>
+                ) : (
+                  <a key={n.id} href={n.href} className="nav-link">
+                    {n.label}
+                  </a>
+                )
               ) : (
                 <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link">
                   {n.label}
@@ -281,9 +289,15 @@ export default function Index() {
           <div className="md:hidden bg-titan-dark/98 border-t border-titan-border px-6 py-5 flex flex-col gap-5">
             {navItems.map((n) =>
               n.href ? (
-                <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link text-left">
-                  {n.label}
-                </a>
+                n.href.startsWith("http") ? (
+                  <a key={n.id} href={n.href} target="_blank" rel="noopener noreferrer" className="nav-link text-left">
+                    {n.label}
+                  </a>
+                ) : (
+                  <a key={n.id} href={n.href} className="nav-link text-left">
+                    {n.label}
+                  </a>
+                )
               ) : (
                 <button key={n.id} onClick={() => scrollTo(n.id)} className="nav-link text-left">
                   {n.label}
