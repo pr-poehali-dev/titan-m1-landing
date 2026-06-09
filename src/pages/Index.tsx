@@ -51,6 +51,7 @@ const ADVANTAGES = [
 const BASE_PRICE = 690_000;
 
 const OPTIONS = [
+  { id: "simple_design", label: "Упрощённый дизайн",                                                      price: -48_000 },
   { id: "4seat",        label: "Четырёхместный кузов",                                                    price: 134_000 },
   { id: "doors",        label: "Установка дверей со стеклом",                                             price: 49_000  },
   { id: "windshield",   label: "Лобовое съёмное стекло + дворник + омыватель",                            price: 38_000  },
@@ -500,7 +501,7 @@ export default function Index() {
                         </div>
                       </div>
                       <div className="mt-3 font-oswald text-base font-semibold text-gold">
-                        + {opt.price.toLocaleString("ru-RU")} ₽
+                        {opt.price < 0 ? "" : "+ "}{opt.price.toLocaleString("ru-RU")} ₽
                       </div>
                     </button>
                   </Reveal>
@@ -526,7 +527,7 @@ export default function Index() {
                     return (
                       <div key={id} className="flex justify-between">
                         <span className="font-ibm text-xs text-white/35 max-w-[55%] leading-snug">{o.label}</span>
-                        <span className="font-oswald text-xs text-gold/70">+{o.price.toLocaleString("ru-RU")} ₽</span>
+                        <span className="font-oswald text-xs text-gold/70">{o.price < 0 ? "" : "+"}{o.price.toLocaleString("ru-RU")} ₽</span>
                       </div>
                     );
                   })}
