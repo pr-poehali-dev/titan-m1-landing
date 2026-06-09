@@ -706,6 +706,59 @@ export default function Index() {
 
       <div className="section-divider" />
 
+      {/* ── QUEUE ────────────────────────────────────────────── */}
+      <section id="queue" className="py-24 px-6 bg-titan-surface">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <span className="font-oswald text-[11px] tracking-[0.35em] text-gold uppercase">Производство</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-white mt-3 mb-4">Очередь на сборку</h2>
+            <p className="font-ibm text-sm text-white/40 mb-12 max-w-lg">
+              Производим <span className="text-gold font-semibold">5 единиц в месяц</span>. Места распределяются по предоплате — забронируйте свой месяц заранее.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
+            {[
+              { month: "Июль",    year: "2026", free: true  },
+              { month: "Август",  year: "2026", free: true  },
+              { month: "Сентябрь",year: "2026", free: true  },
+              { month: "Октябрь", year: "2026", free: true  },
+              { month: "Ноябрь",  year: "2026", free: true  },
+            ].map((m, i) => (
+              <Reveal key={m.month} delay={i * 80}>
+                <div className={`card-premium p-5 text-center border ${m.free ? "border-gold/30 hover:border-gold/60" : "border-titan-border opacity-50"} transition-all`}>
+                  <div className={`w-2 h-2 rounded-full mx-auto mb-3 ${m.free ? "bg-emerald-400" : "bg-red-500/60"}`} />
+                  <div className="font-oswald text-base font-semibold text-white tracking-wide">{m.month}</div>
+                  <div className="font-ibm text-[10px] text-white/30 mt-0.5">{m.year}</div>
+                  <div className={`font-oswald text-[10px] tracking-widest uppercase mt-3 ${m.free ? "text-emerald-400" : "text-red-400/60"}`}>
+                    {m.free ? "Свободно" : "Занято"}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 card-premium p-6">
+              <div className="flex items-center gap-4 shrink-0">
+                <div className="w-12 h-12 bg-gold/10 border border-gold/20 flex items-center justify-center">
+                  <Icon name="CalendarCheck" size={20} className="text-gold" />
+                </div>
+                <div>
+                  <div className="font-oswald text-sm font-semibold text-white">Забронировать место</div>
+                  <div className="font-ibm text-xs text-white/35 mt-0.5">Оставьте заявку — мы свяжемся и зафиксируем за вами месяц</div>
+                </div>
+              </div>
+              <button onClick={() => scrollTo("contacts")} className="btn-gold px-8 py-3 text-sm sm:ml-auto shrink-0">
+                <span>Оставить заявку</span>
+              </button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
       {/* ── CONTACTS ─────────────────────────────────────────── */}
       <section id="contacts" className="py-24 px-6 bg-titan-surface">
         <div className="max-w-7xl mx-auto">
