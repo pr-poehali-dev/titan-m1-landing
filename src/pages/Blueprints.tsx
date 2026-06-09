@@ -92,6 +92,12 @@ export default function Blueprints() {
                 Профессиональный набор чертежей с инструкцией — всё необходимое для самостоятельного изготовления
                 багги-вездехода ТИТАН М1 в вашей мастерской.
               </p>
+              <div className="mb-8">
+                <div className="font-ibm text-[10px] text-white/35 uppercase tracking-widest mb-1">Стоимость комплекта</div>
+                <div className="font-cormorant font-bold text-gradient-gold" style={{ fontSize: "clamp(36px, 5vw, 52px)", lineHeight: 1 }}>
+                  25 000 ₽
+                </div>
+              </div>
               <a
                 href="#order"
                 className="btn-gold px-10 py-4 text-sm inline-block"
