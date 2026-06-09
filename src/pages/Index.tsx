@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
+const HERO_IMAGES = [
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/782dc31b-6fc5-43ce-b740-8e5eb305d7d1.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/f25f1a8e-ca04-4cfc-bd23-7cd35767c784.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/d7414d74-c771-4b37-ab35-f1d219b41820.jpg",
+];
+
 const IMAGES = [
   "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/146d119a-2425-42e9-8750-3947ed40fb44.jpg",
   "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/f66d5e20-5222-4526-8ce1-c32db214135d.jpg",
@@ -147,7 +153,7 @@ export default function Index() {
     const timer = setInterval(() => {
       setHeroFade(false);
       setTimeout(() => {
-        setHeroSlide((p) => (p + 1) % IMAGES.length);
+        setHeroSlide((p) => (p + 1) % HERO_IMAGES.length);
         setHeroFade(true);
       }, 400);
     }, 5000);
@@ -274,7 +280,7 @@ export default function Index() {
         {/* BG slider */}
         <div className="absolute inset-0">
           <img
-            src={IMAGES[heroSlide]}
+            src={HERO_IMAGES[heroSlide]}
             alt="ТИТАН М1"
             className="w-full h-full object-cover object-center"
             style={{ opacity: heroFade ? 1 : 0, transition: "opacity 0.4s ease" }}
@@ -343,7 +349,7 @@ export default function Index() {
 
         {/* Slider dots */}
         <div className="absolute bottom-20 right-8 md:right-12 flex flex-col gap-2 z-20">
-          {IMAGES.map((_, i) => (
+          {HERO_IMAGES.map((_, i) => (
             <button
               key={i}
               onClick={() => goSlide(i)}
