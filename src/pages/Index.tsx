@@ -51,7 +51,7 @@ const ADVANTAGES = [
 const BASE_PRICE = 690_000;
 
 const OPTIONS = [
-  { id: "simple_design", label: "Упрощённый дизайн",                                                      price: -48_000 },
+  { id: "simple_design", label: "Упрощённый дизайн (внешние элементы)",                                                      price: -48_000 },
   { id: "4seat",        label: "Четырёхместный кузов",                                                    price: 134_000 },
   { id: "doors",        label: "Установка дверей со стеклом",                                             price: 49_000  },
   { id: "windshield",   label: "Лобовое съёмное стекло + дворник + омыватель",                            price: 38_000  },
