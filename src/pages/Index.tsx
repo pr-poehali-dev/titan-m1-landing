@@ -231,14 +231,14 @@ export default function Index() {
     { label: "Комплектация",   id: "equipment" },
     { label: "Опции",          id: "calculator" },
     { label: "Галерея",        id: "gallery" },
-    { label: "Новости",        id: "news",    href: "/news" },
+    { label: "Новости",        id: "news",    href: "/#/news" },
     { label: "Группа ВК",      id: "vk",      href: "https://vk.com/s_techno_krd" },
   ];
 
   const moreItems = [
     { label: "Оформление спортинвентаря", id: "docs" },
-    { label: "Чертежи",       href: "/blueprints" },
-    { label: "КИТ-комплекты", href: "/kit" },
+    { label: "Чертежи",       href: "/#/blueprints" },
+    { label: "КИТ-комплекты", href: "/#/kit" },
   ];
 
   return (

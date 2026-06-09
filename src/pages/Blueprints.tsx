@@ -20,11 +20,11 @@ export default function Blueprints() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/#/" className="flex items-center gap-2">
             <span className="font-oswald text-xl font-bold tracking-[0.2em] text-white">ТИТАН</span>
             <span className="font-oswald text-xl font-light tracking-[0.2em] text-gold">М1</span>
           </a>
-          <a href="/" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors font-ibm text-sm">
+          <a href="/#/" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors font-ibm text-sm">
             <Icon name="ArrowLeft" size={16} />
             На главную
           </a>
@@ -47,7 +47,7 @@ export default function Blueprints() {
             <p className="font-ibm text-sm text-white/35 leading-relaxed">
               Контент этой страницы готовится. Следите за обновлениями.
             </p>
-            <a href="/" className="btn-gold px-8 py-3 text-sm mt-8 inline-block">
+            <a href="/#/" className="btn-gold px-8 py-3 text-sm mt-8 inline-block">
               <span>Вернуться на главную</span>
             </a>
           </div>
