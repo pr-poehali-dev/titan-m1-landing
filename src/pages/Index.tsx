@@ -717,8 +717,9 @@ export default function Index() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mb-10">
             {[
+              { month: "Июнь",    year: "2026", free: false },
               { month: "Июль",    year: "2026", free: true  },
               { month: "Август",  year: "2026", free: true  },
               { month: "Сентябрь",year: "2026", free: true  },
