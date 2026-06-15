@@ -411,6 +411,9 @@ export default function Index() {
               <button onClick={() => scrollTo("specs")} className="btn-outline-gold px-10 py-4 text-sm">
                 Характеристики
               </button>
+              <a href="/#/marina" className="px-10 py-4 text-sm font-oswald tracking-wider uppercase bg-red-600 hover:bg-red-500 text-white transition-colors">
+                Марина Булочка
+              </a>
             </div>
 
             {/* Stats row */}
