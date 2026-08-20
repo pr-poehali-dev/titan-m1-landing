@@ -8,6 +8,11 @@ const HERO_IMAGES = [
 ];
 
 const IMAGES = [
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/c17fa635-9882-46ad-ae00-32f157f13c84.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/50c0bed4-6ddf-412f-a287-d39f1c46ff5f.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/5c460763-40aa-4652-aca3-3d65a90b8993.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/0215442a-c9f2-4937-9c60-2b60ed5fc76b.jpg",
+  "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/4f009c57-1d62-4839-92d6-aecdc48735f2.jpg",
   "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/6dac9425-aaf7-45f0-ad91-b6ac70b2122e.jpg",
   "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/a89e451b-faf4-4434-a9e0-45c4f6525c4f.jpg",
   "https://cdn.poehali.dev/projects/f0c3aa81-f7bb-4a4d-8f8e-7bd2ccd52302/bucket/392bc7b6-86e7-488a-a152-0b0bb176b304.jpg",
@@ -645,52 +650,77 @@ export default function Index() {
             {/* Main large — front view */}
             <Reveal className="col-span-2 row-span-2">
               <div className="gallery-item w-full h-full min-h-[320px] overflow-hidden cursor-pointer">
-                <img src={IMAGES[0]} alt="ТИТАН М1 — вид спереди" className="w-full h-full object-cover" />
+                <img src={IMAGES[0]} alt="ТИТАН М1 — вид спереди 3/4" className="w-full h-full object-cover" />
               </div>
             </Reveal>
-            <Reveal delay={80}>
+            <Reveal delay={60}>
               <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[1]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+                <img src={IMAGES[1]} alt="ТИТАН М1 — вид спереди" className="w-full h-full object-cover" />
               </div>
             </Reveal>
-            <Reveal delay={160}>
+            <Reveal delay={120}>
               <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[2]} alt="ТИТАН М1 — вид сзади" className="w-full h-full object-cover" />
+                <img src={IMAGES[2]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={180} className="col-span-2">
+              <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
+                <img src={IMAGES[3]} alt="ТИТАН М1 — моторный отсек" className="w-full h-full object-cover object-center" />
               </div>
             </Reveal>
             <Reveal delay={240} className="col-span-2">
               <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
-                <img src={IMAGES[3]} alt="ТИТАН М1 — спереди" className="w-full h-full object-cover object-center" />
+                <img src={IMAGES[4]} alt="ТИТАН М1 — вид спереди сбоку" className="w-full h-full object-cover object-center" />
               </div>
             </Reveal>
-            <Reveal delay={320} className="col-span-2">
+            <Reveal delay={300}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[5]} alt="ТИТАН М1 — вид спереди" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[6]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={420}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[7]} alt="ТИТАН М1 — вид сзади" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={480} className="col-span-2">
               <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
-                <img src={IMAGES[4]} alt="ТИТАН М1 — упрощённый дизайн" className="w-full h-full object-cover object-center" />
+                <img src={IMAGES[8]} alt="ТИТАН М1 — спереди" className="w-full h-full object-cover object-center" />
               </div>
             </Reveal>
-            <Reveal delay={400}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[5]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={480}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[6]} alt="ТИТАН М1 — двигатель" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={560}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[7]} alt="ТИТАН М1 — спереди" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={640}>
-              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
-                <img src={IMAGES[8]} alt="ТИТАН М1 — сзади" className="w-full h-full object-cover" />
-              </div>
-            </Reveal>
-            <Reveal delay={720} className="col-span-2">
+            <Reveal delay={540} className="col-span-2">
               <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
-                <img src={IMAGES[9]} alt="ТИТАН М1 — подвеска" className="w-full h-full object-cover" />
+                <img src={IMAGES[9]} alt="ТИТАН М1 — упрощённый дизайн" className="w-full h-full object-cover object-center" />
+              </div>
+            </Reveal>
+            <Reveal delay={600}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[10]} alt="ТИТАН М1 — вид сбоку" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={660}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[11]} alt="ТИТАН М1 — двигатель" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={720}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[12]} alt="ТИТАН М1 — спереди" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={780}>
+              <div className="gallery-item aspect-square overflow-hidden cursor-pointer">
+                <img src={IMAGES[13]} alt="ТИТАН М1 — сзади" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+            <Reveal delay={840} className="col-span-2">
+              <div className="gallery-item aspect-video overflow-hidden cursor-pointer">
+                <img src={IMAGES[14]} alt="ТИТАН М1 — подвеска" className="w-full h-full object-cover" />
               </div>
             </Reveal>
           </div>
