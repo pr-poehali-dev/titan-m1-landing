@@ -50,10 +50,9 @@ const ADVANTAGES = [
   { icon: "Zap", title: "Всё включено", desc: "Лебёдка 3,5 т., фаркоп и оптика в базе" },
 ];
 
-const BASE_PRICE = 690_000;
+const BASE_PRICE = 590_000;
 
 const OPTIONS = [
-  { id: "simple_design", label: "Упрощённый дизайн (внешние элементы)",                                                      price: -48_000 },
   { id: "4seat",        label: "Четырёхместный кузов",                                                    price: 134_000 },
   { id: "doors",        label: "Установка дверей со стеклом",                                             price: 49_000  },
   { id: "windshield",   label: "Лобовое съёмное стекло + дворник + омыватель",                            price: 38_000  },
@@ -411,9 +410,6 @@ export default function Index() {
               <button onClick={() => scrollTo("specs")} className="btn-outline-gold px-10 py-4 text-sm">
                 Характеристики
               </button>
-              <a href="/#/marina" className="px-10 py-4 text-sm font-oswald tracking-wider uppercase bg-red-600 hover:bg-red-500 text-white transition-colors">
-                Марина Булочка
-              </a>
             </div>
 
             {/* Stats row */}
@@ -723,8 +719,8 @@ export default function Index() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mb-10">
             {[
               { month: "Июнь",    year: "2026", free: false },
-              { month: "Июль",    year: "2026", free: true  },
-              { month: "Август",  year: "2026", free: true  },
+              { month: "Июль",    year: "2026", free: false },
+              { month: "Август",  year: "2026", free: false },
               { month: "Сентябрь",year: "2026", free: true  },
               { month: "Октябрь", year: "2026", free: true  },
               { month: "Ноябрь",  year: "2026", free: true  },
